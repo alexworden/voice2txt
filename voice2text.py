@@ -8,9 +8,6 @@ client = OpenAI(
 from docx import Document
 
 def transcribe_audio(audio_file_path):
-    
-    # The following parameter was removed from the create() call to investigate why the transcription was not working...
-    # prompt="This is a technical interview for a Senior Engineering Leadership role between an interviewer and an interviewee. The interviewee is applying for a role as a Senior Engineering Leader. The interviewer is asking questions to determine if the interviewee is a good fit for the role. The interviewee is answering the questions. Try to identify the questions asked by the interviewer and the answers provided by the interviewee and indicate them by prefacing with either INTERVIEWER: or CANDIDATE:."
 
     with open(audio_file_path, 'rb') as audio_file:
         transcription = client.audio.transcriptions.create(model="whisper-1", file=audio_file, prompt="Interview of Alex for Senior Engineering Leadership role. Finix, Rocket Lawyer, Bigfoot Biomedical, Abbott, GE, Google, WebLogic, Division.")
